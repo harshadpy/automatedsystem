@@ -9,3 +9,4 @@ sendgrid
 openai
 reportlab
 requests
+psycopg2-binary

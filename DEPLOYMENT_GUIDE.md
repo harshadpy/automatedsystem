@@ -64,7 +64,19 @@ Before deploying, you need to push your code to GitHub.
     -   `BOLNA_API_KEY`: `...`
     -   `BOLNA_AGENT_ID`: `...`
     -   `SECRET_KEY`: `(Generate a random string)`
-    -   `DATABASE_URL`: `sqlite:///database.db` (Note: SQLite on Render is ephemeral. For persistence, use Render's PostgreSQL, but for a demo, SQLite is fine).
+    -   `SECRET_KEY`: `(Generate a random string)`
+    -   `DATABASE_URL`: `postgres://...` (See step 5a below)
+
+5a. **Database Setup (PostgreSQL)**:
+    -   On Render Dashboard, click **"New +"** -> **"PostgreSQL"**.
+    -   Name: `python-coaching-db`.
+    -   Region: Same as your backend (e.g., Singapore).
+    -   Plan: **Free**.
+    -   Click **Create Database**.
+    -   Copy the **Internal Database URL** (starts with `postgres://`).
+    -   Go back to your **Web Service** -> **Environment** and paste it as `DATABASE_URL`.
+    -   **Important**: Append `?sslmode=require` to the end of the URL if you face connection issues (though Render usually handles this internally).
+
 6.  **Deploy**: Click **"Create Web Service"**.
 
 > **Note**: Copy the **Service URL** (e.g., `https://python-backend.onrender.com`) once deployed. You will need it for the frontend.
