@@ -77,6 +77,18 @@ Before deploying, you need to push your code to GitHub.
     -   Go back to your **Web Service** -> **Environment** and paste it as `DATABASE_URL`.
     -   **Important**: Append `?sslmode=require` to the end of the URL if you face connection issues (though Render usually handles this internally).
 
+5b. **Initialize & Seed Database (Render Shell)**:
+    -   Once deployed, go to your **Web Service** dashboard.
+    -   Click on the **Shell** tab (left sidebar).
+    -   Run the initialization script:
+        ```bash
+        python init_db.py
+        ```
+    -   (Optional) Run the seed script to add mock data:
+        ```bash
+        python seed_data.py
+        ```
+
 6.  **Deploy**: Click **"Create Web Service"**.
 
 > **Note**: Copy the **Service URL** (e.g., `https://python-backend.onrender.com`) once deployed. You will need it for the frontend.
