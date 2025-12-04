@@ -26,8 +26,14 @@ from . import crud, auth
 from .services import call_service, email_service, certificate_service, whatsapp_service
 
 @asynccontextmanager
+@asynccontextmanager
 async def lifespan(app: FastAPI):
-    create_db_and_tables()
+    print("STARTUP: Initializing database...")
+    try:
+        create_db_and_tables()
+        print("STARTUP: Database initialized successfully!")
+    except Exception as e:
+        print(f"STARTUP ERROR: Database initialization failed: {e}")
     yield
 
 app = FastAPI(
