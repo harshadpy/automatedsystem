@@ -69,6 +69,76 @@ app.add_middleware(
 def read_root():
     return {"message": "Welcome to the AI-Powered Python Coaching Center API"}
 
+@app.get("/seed_db")
+def seed_database(session: Session = Depends(get_session)):
+    """
+    Seeding database with mock data.
+    WARNING: This is for demo purposes only.
+    """
+    try:
+        # 1. Create Admin User
+        admin_email = "admin@example.com"
+        existing_admin = session.exec(select(User).where(User.email == admin_email)).first()
+        if not existing_admin:
+            admin = User(
+                name="Admin User",
+                email=admin_email,
+                role="admin",
+                hashed_password=auth.get_password_hash("admin123")
+            )
+            session.add(admin)
+        
+        # 2. Create Courses
+        courses_data = [
+            {"title": "Python for Beginners", "description": "Learn Python from scratch.", "price": 5000},
+            {"title": "Advanced Python", "description": "Master advanced Python concepts.", "price": 7500},
+            {"title": "Data Science with Python", "description": "Learn data analysis and visualization.", "price": 10000}
+        ]
+        
+        created_courses = []
+        for course_data in courses_data:
+            existing_course = session.exec(select(Course).where(Course.title == course_data["title"])).first()
+            if not existing_course:
+                course = Course(**course_data)
+                session.add(course)
+                created_courses.append(course)
+            else:
+                created_courses.append(existing_course)
+        
+        session.commit()
+        for course in created_courses:
+            session.refresh(course)
+
+        # 3. Create Batches
+        if created_courses:
+            batches_data = [
+                {"course_id": created_courses[0].id, "start_date": "2023-12-01", "timings": "Mon-Wed-Fri 7PM", "meeting_link": "https://meet.google.com/abc-defg-hij"},
+                {"course_id": created_courses[1].id, "start_date": "2023-12-01", "timings": "Tue-Thu 7PM", "meeting_link": "https://zoom.us/j/123456789"},
+                {"course_id": created_courses[2].id, "start_date": "2024-01-15", "timings": "Sat-Sun 10AM", "meeting_link": "https://meet.google.com/xyz-abcd-efg"}
+            ]
+            for batch_data in batches_data:
+                existing_batch = session.exec(select(Batch).where(Batch.course_id == batch_data["course_id"]).where(Batch.start_date == batch_data["start_date"])).first()
+                if not existing_batch:
+                    batch = Batch(**batch_data)
+                    session.add(batch)
+
+        # 4. Create Leads
+        leads_data = [
+            {"name": "John Doe", "email": "john@example.com", "phone": "1234567890", "city": "New York", "role": "student", "status": "new"},
+            {"name": "Jane Smith", "email": "jane@example.com", "phone": "9876543210", "city": "London", "role": "parent", "status": "interested"},
+            {"name": "Alice Johnson", "email": "alice@example.com", "phone": "5551234567", "city": "Paris", "role": "student", "status": "enrolled"}
+        ]
+        for lead_data in leads_data:
+            existing_lead = session.exec(select(Lead).where(Lead.email == lead_data["email"])).first()
+            if not existing_lead:
+                lead = Lead(**lead_data)
+                session.add(lead)
+
+        session.commit()
+        return {"message": "Database seeded successfully! You can now login with admin@example.com / admin123"}
+    except Exception as e:
+        return {"error": str(e)}
+
 # Auth Endpoints
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
