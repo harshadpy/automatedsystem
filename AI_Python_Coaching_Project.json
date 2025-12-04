@@ -1,0 +1,75 @@
+{
+  "notion": {
+    "version": "v1",
+    "pages": [
+      {
+        "title": "🚀 AI-Powered Python Coaching Center — Project Tracker",
+        "icon": "🚀",
+        "type": "database",
+        "database": {
+          "title": "Project Progress",
+          "properties": {
+            "Day": { "type": "number" },
+            "Category": { "type": "select" },
+            "Task": { "type": "title" },
+            "Status": { "type": "select" },
+            "Completed": { "type": "checkbox" },
+            "Evidence": { "type": "url" }
+          },
+          "select_options": {
+            "Category": [
+              { "name": "Architecture" },
+              { "name": "Backend" },
+              { "name": "Automations" },
+              { "name": "Payments + Enrollment" },
+              { "name": "Dashboard" },
+              { "name": "Assignments + Certificate + Support" },
+              { "name": "Testing + Docs + Demo" }
+            ],
+            "Status": [
+              { "name": "Not Started" },
+              { "name": "In Progress" },
+              { "name": "Testing" },
+              { "name": "Completed" }
+            ]
+          },
+          "rows": [
+            { "Day": 1, "Category": "Architecture", "Task": "Define tech stack", "Status": "Not Started", "Completed": false },
+            { "Day": 1, "Category": "Architecture", "Task": "Create ER + workflow diagrams", "Status": "Not Started", "Completed": false },
+            { "Day": 1, "Category": "Architecture", "Task": "Repo + folder structure", "Status": "Not Started", "Completed": false },
+            { "Day": 1, "Category": "Architecture", "Task": "Documentation — ARCHITECTURE.md + DB schema + .env.example", "Status": "Not Started", "Completed": false },
+
+            { "Day": 2, "Category": "Backend", "Task": "Backend initialization", "Status": "Not Started", "Completed": false },
+            { "Day": 2, "Category": "Backend", "Task": "Admin authentication", "Status": "Not Started", "Completed": false },
+            { "Day": 2, "Category": "Backend", "Task": "Lead module (APIs + CSV import)", "Status": "Not Started", "Completed": false },
+            { "Day": 2, "Category": "Backend", "Task": "API Testing with Postman", "Status": "Not Started", "Completed": false },
+
+            { "Day": 3, "Category": "Automations", "Task": "SendGrid email automation", "Status": "Not Started", "Completed": false },
+            { "Day": 3, "Category": "Automations", "Task": "WhatsApp automation (AiSensy)", "Status": "Not Started", "Completed": false },
+            { "Day": 3, "Category": "Automations", "Task": "Bolna.ai call automation", "Status": "Not Started", "Completed": false },
+            { "Day": 3, "Category": "Automations", "Task": "Store responses → CRM logs", "Status": "Not Started", "Completed": false },
+
+            { "Day": 4, "Category": "Payments + Enrollment", "Task": "Razorpay/Stripe integration", "Status": "Not Started", "Completed": false },
+            { "Day": 4, "Category": "Payments + Enrollment", "Task": "Webhook → Convert lead to student", "Status": "Not Started", "Completed": false },
+            { "Day": 4, "Category": "Payments + Enrollment", "Task": "Course & batch creation", "Status": "Not Started", "Completed": false },
+            { "Day": 4, "Category": "Payments + Enrollment", "Task": "Auto-generate schedule", "Status": "Not Started", "Completed": false },
+
+            { "Day": 5, "Category": "Dashboard", "Task": "Student/Parent login", "Status": "Not Started", "Completed": false },
+            { "Day": 5, "Category": "Dashboard", "Task": "Upcoming + past sessions", "Status": "Not Started", "Completed": false },
+            { "Day": 5, "Category": "Dashboard", "Task": "Join links + recordings + materials", "Status": "Not Started", "Completed": false },
+
+            { "Day": 6, "Category": "Assignments + Certificate + Support", "Task": "Assignment upload (Admin)", "Status": "Not Started", "Completed": false },
+            { "Day": 6, "Category": "Assignments + Certificate + Support", "Task": "Submission + feedback (Student)", "Status": "Not Started", "Completed": false },
+            { "Day": 6, "Category": "Assignments + Certificate + Support", "Task": "Certificate PDF generator", "Status": "Not Started", "Completed": false },
+            { "Day": 6, "Category": "Assignments + Certificate + Support", "Task": "Support ticket/chat module", "Status": "Not Started", "Completed": false },
+
+            { "Day": 7, "Category": "Testing + Docs + Demo", "Task": "End-to-end flow testing", "Status": "Not Started", "Completed": false },
+            { "Day": 7, "Category": "Testing + Docs + Demo", "Task": "Bug fixes + polish", "Status": "Not Started", "Completed": false },
+            { "Day": 7, "Category": "Testing + Docs + Demo", "Task": "Sample demo data", "Status": "Not Started", "Completed": false },
+            { "Day": 7, "Category": "Testing + Docs + Demo", "Task": "Record walkthrough demo video", "Status": "Not Started", "Completed": false }
+          ]
+        }
+      }
+    ]
+  }
+}

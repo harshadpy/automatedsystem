@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlmodel
+python-multipart
+python-dotenv
+python-jose[cryptography]
+passlib[bcrypt]
+sendgrid
+openai
+reportlab
+requests
