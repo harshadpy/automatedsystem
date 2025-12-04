@@ -50,7 +50,11 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Frontend URL
+    allow_origins=[
+        "http://localhost:5173",
+        "https://automatedsystem.vercel.app",
+        "https://automatedsystem.vercel.app/"
+    ],  # Frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
