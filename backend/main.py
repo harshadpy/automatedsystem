@@ -26,7 +26,6 @@ from . import crud, auth
 from .services import call_service, email_service, certificate_service, whatsapp_service
 
 @asynccontextmanager
-@asynccontextmanager
 async def lifespan(app: FastAPI):
     print("STARTUP: Initializing database...")
     try:
