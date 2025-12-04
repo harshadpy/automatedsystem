@@ -4,7 +4,6 @@ import { getCurrentUser } from '../utils/api';
 import ClassCard from './ClassCard';
 import Assignments from './Assignments';
 import Support from './Support';
-import Support from './Support';
 import api from '../utils/api';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
